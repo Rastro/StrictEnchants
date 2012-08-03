@@ -18,6 +18,7 @@ public class StricterEnchant extends JavaPlugin{
 		groups = new HashMap<String, Group>();
 		getServer().getPluginManager().registerEvents(new EnchantListener(), this);
 		getServer().getPluginManager().registerEvents(new SyncListener(), this);
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Timer(), 20L, 3600L);
 	}
 	
 	@Override
@@ -28,4 +29,13 @@ public class StricterEnchant extends JavaPlugin{
 	public static void info(String info) {
 		Bukkit.getLogger().info("[StricterEnchant] " + info);
 	}
+}
+
+class Timer extends SyncListener implements Runnable {
+
+	@Override
+	public void run() {
+		syncGroups();	
+	}
+	
 }
