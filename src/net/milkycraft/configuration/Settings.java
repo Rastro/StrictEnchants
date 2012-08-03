@@ -12,8 +12,8 @@ import org.bukkit.configuration.file.FileConfiguration;
  */
 public class Settings extends Config {
 
-	public static int wildhigh, wildmed, wildlow, wilddef;
-	public static int qualhigh, qualmed, quallow, qualdef;
+	public static Double wildhigh, wildmed, wildlow, wilddef;
+	public static Double qualhigh, qualmed, quallow, qualdef;
 	public static List<String> listhigh, listmed, listlow, listdef;
 	/**
 	 * Instantiates a new settings.
@@ -50,14 +50,14 @@ public class Settings extends Config {
 	 */
 	@Override
 	public void loadKeys() {
-		wildhigh = config.getInt("Groups.High.WildcardChance");
-		wildmed = config.getInt("Groups.Medium.WildcardChance");
-		wildlow = config.getInt("Groups.Low.WildcardChance");
-		wilddef = config.getInt("Groups.Default.WildcardChance");
-		qualhigh = config.getInt("Groups.High.GeneralQualityOfEnchants");
-		qualmed = config.getInt("Groups.Medium.GeneralQualityOfEnchants");
-		quallow = config.getInt("Groups.Low.GeneralQualityOfEnchants");
-		qualdef = config.getInt("Groups.Default.GeneralQualityOfEnchants");
+		wildhigh = config.getDouble("Groups.High.WildcardChance");
+		wildmed = config.getDouble("Groups.Medium.WildcardChance");
+		wildlow = config.getDouble("Groups.Low.WildcardChance");
+		wilddef = config.getDouble("Groups.Default.WildcardChance");
+		qualhigh = config.getDouble("Groups.High.GeneralQualityOfEnchants");
+		qualmed = config.getDouble("Groups.Medium.GeneralQualityOfEnchants");
+		quallow = config.getDouble("Groups.Low.GeneralQualityOfEnchants");
+		qualdef = config.getDouble("Groups.Default.GeneralQualityOfEnchants");
 		listhigh = config.getStringList("Groups.High.BlockedEnchants");
 		listmed = config.getStringList("Groups.Medium.BlockedEnchants");
 		listlow = config.getStringList("Groups.High.BlockedEnchants");

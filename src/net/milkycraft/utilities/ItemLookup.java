@@ -4,6 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public class ItemLookup {
+
 	public static boolean isDiamond(ItemStack item) {
 		if (item.getType() == Material.DIAMOND_SWORD
 				|| item.getType() == Material.DIAMOND_AXE
@@ -82,5 +83,9 @@ public class ItemLookup {
 			return true;
 		}
 		return false;
+	}
+	
+	public static boolean isBow(ItemStack item) {
+		return item.getType() == Material.BOW;
 	}
 }

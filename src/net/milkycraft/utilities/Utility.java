@@ -1,20 +1,20 @@
 package net.milkycraft.utilities;
 
-import org.bukkit.entity.Player;
+import java.util.Map;
+
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemStack;
 
 public class Utility {
-	
-	public static Group getEnchanterGroup(Player player) {
-		if(player.isOp() || player.hasPermission("stricterenchant.group.max")) {
-			return Group.MAX;
-		} else if(player.hasPermission("stricterenchant.group.high")) {
-			return Group.HIGH;
-		} else if(player.hasPermission("stricterenchant.group.medium")) {
-			return Group.MEDIUM;
-		} else if(player.hasPermission("stricterenchant.group.low")) {
-			return Group.LOW;
-		} else {
-			return Group.DEFAULT;
+
+	public static void enchant(ItemStack item, Map<Enchantment, Integer> enchants) {
+		if(item == null) {
+			return;
 		}
+		for(Enchantment ench : item.getEnchantments().keySet()) {
+			item.removeEnchantment(ench);
+		}
+		item.addEnchantments(enchants);
 	}
+	
 }
