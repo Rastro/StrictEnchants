@@ -13,7 +13,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 /**
  * The Class Config.
  */
-public abstract class EasyConfig {
+public abstract class Config {
 
 	/** The file name. */
 	protected String fileName;
@@ -38,7 +38,7 @@ public abstract class EasyConfig {
 	 * @param fileName
 	 *            the file name
 	 */
-	public EasyConfig(StricterEnchant plugin, String fileName) {
+	public Config(StricterEnchant plugin, String fileName) {
 		this.plugin = plugin;
 		this.fileName = fileName;
 		dataFolder = plugin.getDataFolder();
