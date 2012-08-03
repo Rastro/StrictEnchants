@@ -35,9 +35,9 @@ public class Settings extends Config {
 	@Override
 	public void load() {
 		// If it doesn't exist, copy it from the .jar
-		if (!configFile.exists()) {
-			dataFolder.mkdir();
-			plugin.saveDefaultConfig();
+		if (!this.configFile.exists()) {
+			this.dataFolder.mkdir();
+			this.plugin.saveDefaultConfig();
 		}
 		addDefaults();
 		loadKeys();

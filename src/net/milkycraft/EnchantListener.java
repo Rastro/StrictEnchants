@@ -13,7 +13,7 @@ public class EnchantListener extends StricterEnchant implements Listener {
 		if (e.getItem() == null) {
 			return;
 		}
-		if (groups.get(e.getEnchanter().getName()) == Group.MAX) {
+		if (this.groups.get(e.getEnchanter().getName()) == Group.MAX) {
 			return;
 		} 
 			Algorithm.get().analyze(e.getEnchanter(), e.getEnchantsToAdd(),

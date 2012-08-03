@@ -14,8 +14,8 @@ public class StricterEnchant extends JavaPlugin{
 	public StricterEnchant main;
 	@Override
 	public void onEnable() {
-		main = this;
-		groups = new HashMap<String, Group>();
+		this.main = this;
+		this.groups = new HashMap<String, Group>();
 		getServer().getPluginManager().registerEvents(new EnchantListener(), this);
 		getServer().getPluginManager().registerEvents(new SyncListener(), this);
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Timer(), 20L, 3600L);
@@ -23,7 +23,7 @@ public class StricterEnchant extends JavaPlugin{
 	
 	@Override
 	public void onDisable() {
-		groups = null;
+		this.groups = null;
 	}
 	
 	public static void info(String info) {

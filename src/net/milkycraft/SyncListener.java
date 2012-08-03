@@ -25,29 +25,29 @@ public class SyncListener extends StricterEnchant implements Listener {
 		}
 		if (e.getPlayer().isOp()
 				|| e.getPlayer().hasPermission("senchant.group.max")) {
-			groups.put(e.getPlayer().getName(), Group.MAX);
+			this.groups.put(e.getPlayer().getName(), Group.MAX);
 			return;
 		} else if (e.getPlayer().hasPermission("senchant.group.high")) {
-			groups.put(e.getPlayer().getName(), Group.HIGH);
+			this.groups.put(e.getPlayer().getName(), Group.HIGH);
 			return;
 		} else if (e.getPlayer().hasPermission("senchant.group.medium")) {
-			groups.put(e.getPlayer().getName(), Group.MEDIUM);
+			this.groups.put(e.getPlayer().getName(), Group.MEDIUM);
 			return;
 		} else if (e.getPlayer().hasPermission("senchant.group.low")) {
-			groups.put(e.getPlayer().getName(), Group.LOW);
+			this.groups.put(e.getPlayer().getName(), Group.LOW);
 			return;
 		} else {
-			groups.put(e.getPlayer().getName(), Group.DEFAULT);
+			this.groups.put(e.getPlayer().getName(), Group.DEFAULT);
 			return;
 		}
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onQuit(PlayerQuitEvent e) {
-		if (groups.containsKey(e.getPlayer().getName())
-				|| queue.contains(e.getPlayer().getName())) {
-			queue.add(e.getPlayer().getName());
-			Bukkit.getScheduler().scheduleSyncDelayedTask(main, new Timer(e.getPlayer().getName()),1200L);
+		if (this.groups.containsKey(e.getPlayer().getName())
+				|| this.queue.contains(e.getPlayer().getName())) {
+			this.queue.add(e.getPlayer().getName());
+			Bukkit.getScheduler().scheduleSyncDelayedTask(this.main, new Timer(e.getPlayer().getName()),1200L);
 		}
 	}
 	
@@ -57,9 +57,9 @@ public class SyncListener extends StricterEnchant implements Listener {
 			return;
 		}
 		if(e.getReason().equals("The Ban Hammer has Spoken!")) {
-			queue.remove(e.getPlayer().getName());
+			this.queue.remove(e.getPlayer().getName());
 		} else {
-			Bukkit.getScheduler().scheduleSyncDelayedTask(main, new Timer(e.getPlayer().getName()),600L);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(this.main, new Timer(e.getPlayer().getName()),600L);
 		}
 	}
 
@@ -72,29 +72,29 @@ class Timer extends SyncListener implements Runnable {
 
 	@Override
 	public void run() {
-		runQueue(name);
+		runQueue(this.name);
 	}
 }
 
 public void syncGroups() {
-	if(groups != null && !groups.isEmpty()) {
-		groups.clear();
+	if(this.groups != null && !this.groups.isEmpty()) {
+		this.groups.clear();
 	}
 	for(Player p : Bukkit.getOnlinePlayers()) {
 		if(p.isOp() || p.hasPermission("senchant.group.max")) {
-			groups.put(p.getName(), Group.MAX);
+			this.groups.put(p.getName(), Group.MAX);
 			continue;
 		} else if(p.hasPermission("senchant.group.high")) {
-			groups.put(p.getName(), Group.HIGH);
+			this.groups.put(p.getName(), Group.HIGH);
 			continue;
 		} else if(p.hasPermission("senchant.group.medium")) {
-			groups.put(p.getName(), Group.MEDIUM);
+			this.groups.put(p.getName(), Group.MEDIUM);
 			continue;
 		} else if(p.hasPermission("senchant.group.low")) {
-			groups.put(p.getName(), Group.LOW);
+			this.groups.put(p.getName(), Group.LOW);
 			continue;
 		} else {
-			groups.put(p.getName(), Group.DEFAULT);
+			this.groups.put(p.getName(), Group.DEFAULT);
 		}
 	}
 }
@@ -103,8 +103,7 @@ public void syncGroups() {
 public void runQueue(String name) {
 	if(Bukkit.getPlayerExact(name).isOnline()) {
 		return;
-	} else {
-		queue.remove(name);
 	}
+	this.queue.remove(name);
 }
 }

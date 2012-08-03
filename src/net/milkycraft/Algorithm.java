@@ -13,954 +13,166 @@ public class Algorithm extends StricterEnchant {
 
 	public static Algorithm alg;
 
+	/**
+	 * @param enchants  
+	 * @param lvl 
+	 */
 	public void analyze(Player enchanter, Map<Enchantment, Integer> enchants,
 			int lvl, ItemStack item) {
-		if (lvl == 1) {
-			if (ItemLookup.isDiamond(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+		if (ItemLookup.isDiamond(item)) {
+			if (isHigh(enchanter.getName())) {
+				if (isWild(Settings.wildhigh)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isIron(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isMedium(enchanter.getName())) {
+				if (isWild(Settings.wildmed)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isGold(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isLow(enchanter.getName())) {
+				if (isWild(Settings.wildlow)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isStoneOrLeather(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isDefault(enchanter.getName())) {
+				if (isWild(Settings.wilddef)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isWood(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isChain(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
 			}
-		} else if (lvl >= 5 && lvl <= 10) {
-			if (ItemLookup.isDiamond(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+		} else if (ItemLookup.isIron(item)) {
+			if (isHigh(enchanter.getName())) {
+				if (isWild(Settings.wildhigh)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isIron(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isMedium(enchanter.getName())) {
+				if (isWild(Settings.wildmed)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isGold(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isLow(enchanter.getName())) {
+				if (isWild(Settings.wildlow)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isStoneOrLeather(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isDefault(enchanter.getName())) {
+				if (isWild(Settings.wilddef)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isWood(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isChain(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
 			}
-		} else if (lvl >= 11 && lvl <= 15) {
-			if (ItemLookup.isDiamond(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+		} else if (ItemLookup.isGold(item)) {
+			if (isHigh(enchanter.getName())) {
+				if (isWild(Settings.wildhigh)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isIron(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isMedium(enchanter.getName())) {
+				if (isWild(Settings.wildmed)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isGold(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isLow(enchanter.getName())) {
+				if (isWild(Settings.wildlow)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isStoneOrLeather(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isDefault(enchanter.getName())) {
+				if (isWild(Settings.wilddef)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isWood(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isChain(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
 			}
-		} else if (lvl >= 16 && lvl <= 20) {
-			if (ItemLookup.isDiamond(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if (isHigh(enchanter.getName())) {
+				if (isWild(Settings.wildhigh)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isIron(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isMedium(enchanter.getName())) {
+				if (isWild(Settings.wildmed)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isGold(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isLow(enchanter.getName())) {
+				if (isWild(Settings.wildlow)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isStoneOrLeather(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isDefault(enchanter.getName())) {
+				if (isWild(Settings.wilddef)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isWood(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isChain(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
 			}
-		} else if (lvl >= 21 && lvl <= 25) {
-			if (ItemLookup.isDiamond(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+		} else if (ItemLookup.isWood(item)) {
+			if (isHigh(enchanter.getName())) {
+				if (isWild(Settings.wildhigh)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isIron(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isMedium(enchanter.getName())) {
+				if (isWild(Settings.wildmed)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isGold(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isLow(enchanter.getName())) {
+				if (isWild(Settings.wildlow)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isStoneOrLeather(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isDefault(enchanter.getName())) {
+				if (isWild(Settings.wilddef)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isWood(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isChain(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
 			}
-		} else if (lvl >= 26 && lvl <= 30) {
-			if (ItemLookup.isDiamond(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+		} else if (ItemLookup.isChain(item)) {
+			if (isHigh(enchanter.getName())) {
+				if (isWild(Settings.wildhigh)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isIron(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isMedium(enchanter.getName())) {
+				if (isWild(Settings.wildmed)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isGold(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isLow(enchanter.getName())) {
+				if (isWild(Settings.wildlow)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
-			} else if (ItemLookup.isStoneOrLeather(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
+			} else if (isDefault(enchanter.getName())) {
+				if (isWild(Settings.wilddef)) {
 
-					} else {
+				} else {
 
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isWood(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
-				}
-			} else if (ItemLookup.isChain(item)) {
-				if (isHigh(enchanter.getName())) {
-					if (isWild(Settings.wildhigh)) {
-
-					} else {
-
-					}
-				} else if (isMedium(enchanter.getName())) {
-					if (isWild(Settings.wildmed)) {
-
-					} else {
-
-					}
-				} else if (isLow(enchanter.getName())) {
-					if (isWild(Settings.wildlow)) {
-
-					} else {
-
-					}
-				} else if (isDefault(enchanter.getName())) {
-					if (isWild(Settings.wilddef)) {
-
-					} else {
-
-					}
 				}
 			}
 		}
@@ -1060,8 +272,8 @@ public class Algorithm extends StricterEnchant {
 	}
 
 	public boolean isHigh(String name) {
-		if (groups.containsKey(name)) {
-			if (groups.get(name) == Group.HIGH) {
+		if (this.groups.containsKey(name)) {
+			if (this.groups.get(name) == Group.HIGH) {
 				return true;
 			}
 		}
@@ -1069,8 +281,8 @@ public class Algorithm extends StricterEnchant {
 	}
 
 	public boolean isMedium(String name) {
-		if (groups.containsKey(name)) {
-			if (groups.get(name) == Group.MEDIUM) {
+		if (this.groups.containsKey(name)) {
+			if (this.groups.get(name) == Group.MEDIUM) {
 				return true;
 			}
 		}
@@ -1078,8 +290,8 @@ public class Algorithm extends StricterEnchant {
 	}
 
 	public boolean isLow(String name) {
-		if (groups.containsKey(name)) {
-			if (groups.get(name) == Group.LOW) {
+		if (this.groups.containsKey(name)) {
+			if (this.groups.get(name) == Group.LOW) {
 				return true;
 			}
 		}
@@ -1087,8 +299,8 @@ public class Algorithm extends StricterEnchant {
 	}
 
 	public boolean isDefault(String name) {
-		if (groups.containsKey(name)) {
-			if (groups.get(name) == Group.DEFAULT) {
+		if (this.groups.containsKey(name)) {
+			if (this.groups.get(name) == Group.DEFAULT) {
 				return true;
 			}
 		}

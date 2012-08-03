@@ -41,17 +41,17 @@ public abstract class Config {
 	public Config(StricterEnchant plugin, String fileName) {
 		this.plugin = plugin;
 		this.fileName = fileName;
-		dataFolder = plugin.getDataFolder();
-		configFile = new File(dataFolder, File.separator + fileName);
-		config = YamlConfiguration.loadConfiguration(configFile);
+		this.dataFolder = plugin.getDataFolder();
+		this.configFile = new File(this.dataFolder, File.separator + fileName);
+		config = YamlConfiguration.loadConfiguration(this.configFile);
 	}
 
 	/**
 	 * Load this config file.
 	 */
 	public void load() {
-		if (!configFile.exists()) {
-			dataFolder.mkdir();
+		if (!this.configFile.exists()) {
+			this.dataFolder.mkdir();
 			saveConfig();
 		}
 		addDefaults();
@@ -63,7 +63,7 @@ public abstract class Config {
 	 */
 	protected void saveConfig() {
 		try {
-			config.save(configFile);
+			config.save(this.configFile);
 		} catch (IOException ex) {
 		}
 	}
@@ -72,9 +72,9 @@ public abstract class Config {
 	 * Save if not exist.
 	 */
 	protected void saveIfNotExist() {
-		if (!configFile.exists()) {
-			if (plugin.getResource(fileName) != null) {
-				plugin.saveResource(fileName, false);
+		if (!this.configFile.exists()) {
+			if (this.plugin.getResource(this.fileName) != null) {
+				this.plugin.saveResource(this.fileName, false);
 			}
 		}
 		rereadFromDisk();
@@ -84,7 +84,7 @@ public abstract class Config {
 	 * Reread from disk.
 	 */
 	protected void rereadFromDisk() {
-		config = YamlConfiguration.loadConfiguration(configFile);
+		config = YamlConfiguration.loadConfiguration(this.configFile);
 	}
 
 	/**

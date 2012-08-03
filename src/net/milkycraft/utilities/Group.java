@@ -18,7 +18,7 @@ public enum Group {
         this.value = value;
     }
     public int getValue() {
-        return value;
+        return this.value;
     }
 
     public static Group getByValue(final int value) {
