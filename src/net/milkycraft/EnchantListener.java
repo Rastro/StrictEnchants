@@ -36,8 +36,7 @@ public class EnchantListener extends StricterEnchant implements Listener {
 		}
 	}
 
-	private void analyze(Player enchanter,
-			Map<Enchantment, Integer> enchantsToAdd, int lvl, ItemStack item) {
+	private void analyze(Player enchanter,Map<Enchantment, Integer> enchants, int lvl, ItemStack item) {
 		if (lvl == 1) {
 			if (ItemLookup.isDiamond(item)) {
 
@@ -124,5 +123,13 @@ public class EnchantListener extends StricterEnchant implements Listener {
 			}
 		}
 	}
-
+	public void enchant(ItemStack item, Map<Enchantment, Integer> enchants) {
+		if(item == null) {
+			return;
+		}
+		for(Enchantment ench : item.getEnchantments().keySet()) {
+			item.removeEnchantment(ench);
+		}
+		item.addEnchantments(enchants);
+	}
 }
