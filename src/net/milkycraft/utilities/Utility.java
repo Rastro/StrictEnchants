@@ -1,6 +1,5 @@
 package net.milkycraft.utilities;
 
-
 import org.bukkit.entity.Player;
 
 public class Utility {
