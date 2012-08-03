@@ -1,2 +1,27 @@
-# Default configuration for StricterEnchant
-# More to come, stay tuned
+# StricterEnchant Configuration 
+# Groups are defined via permissions, groups have NO inheritance. 
+# WildcardChance is the possibility to get a good enchant for your level
+# GeneralQuality is just the basic quality of enchants out of 100
+# BlockedEnchants will be completely blocked from enchanted items
+Groups:
+  High:
+    WildcardChance: 5
+    GeneralQualityOfEnchants: 75
+    BlockedEnchants:
+    - Bane of Arthopods V
+    - Bane of Arthopods IV
+  Medium:
+    WildcardChance: 3
+    GeneralQualityOfEnchants: 60
+    BlockedEnchants: 
+    - Bane of Arthopods V
+  Low:
+    WildcardChance: 2
+    GeneralQualityOfEnchants: 45
+    BlockedEnchants: 
+    - Bane of Arthopods V
+  Default:
+    WildcardChance: 1
+    GeneralQualityOfEnchants: 30
+    BlockedEnchants:
+    - Bane of Arthopods V
