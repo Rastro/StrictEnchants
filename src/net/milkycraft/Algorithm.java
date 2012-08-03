@@ -9,13 +9,26 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Algorithm.
+ */
 public class Algorithm extends StricterEnchant {
 
+	/** The alg. */
 	public static Algorithm alg;
 
 	/**
-	 * @param enchants  
-	 * @param lvl 
+	 * Calculate the enchantments then call Ulility.enchant()
+	 * 
+	 * @param enchanter
+	 *            the enchanter
+	 * @param enchants
+	 *            the enchants
+	 * @param lvl
+	 *            the lvl
+	 * @param item
+	 *            the item
 	 */
 	public void analyze(Player enchanter, Map<Enchantment, Integer> enchants,
 			int lvl, ItemStack item) {
@@ -178,6 +191,18 @@ public class Algorithm extends StricterEnchant {
 		}
 	}
 
+	/**
+	 * A.
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
 	public void a(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
 		if (ItemLookup.isBow(item)) {
@@ -235,10 +260,10 @@ public class Algorithm extends StricterEnchant {
 
 				} else if (getMultiplier(group) <= 80) {
 
-				} else if(getMultiplier(group) <= 90) {
-					
-				} else if(getMultiplier(group) <= 100) {
-					
+				} else if (getMultiplier(group) <= 90) {
+
+				} else if (getMultiplier(group) <= 100) {
+
 				}
 			}
 		} else {
@@ -250,6 +275,13 @@ public class Algorithm extends StricterEnchant {
 		}
 	}
 
+	/**
+	 * Checks if is wildcard.
+	 * 
+	 * @param __
+	 *            the __
+	 * @return the boolean
+	 */
 	public static Boolean isWild(Double __) {
 		double _ = (__ / 100);
 		if (Math.random() <= (_ - (_ / 100))) {
@@ -258,6 +290,13 @@ public class Algorithm extends StricterEnchant {
 		return false;
 	}
 
+	/**
+	 * Gets the multiplier.
+	 * 
+	 * @param group
+	 *            the group
+	 * @return the multiplier
+	 */
 	public static double getMultiplier(Group group) {
 		if (group == Group.HIGH) {
 			return Settings.qualhigh / 100;
@@ -271,6 +310,13 @@ public class Algorithm extends StricterEnchant {
 		return 0;
 	}
 
+	/**
+	 * Checks if is high.
+	 * 
+	 * @param name
+	 *            the name
+	 * @return true, if is high
+	 */
 	public boolean isHigh(String name) {
 		if (this.groups.containsKey(name)) {
 			if (this.groups.get(name) == Group.HIGH) {
@@ -280,6 +326,13 @@ public class Algorithm extends StricterEnchant {
 		return false;
 	}
 
+	/**
+	 * Checks if is medium.
+	 * 
+	 * @param name
+	 *            the name
+	 * @return true, if is medium
+	 */
 	public boolean isMedium(String name) {
 		if (this.groups.containsKey(name)) {
 			if (this.groups.get(name) == Group.MEDIUM) {
@@ -289,6 +342,13 @@ public class Algorithm extends StricterEnchant {
 		return false;
 	}
 
+	/**
+	 * Checks if is low.
+	 * 
+	 * @param name
+	 *            the name
+	 * @return true, if is low
+	 */
 	public boolean isLow(String name) {
 		if (this.groups.containsKey(name)) {
 			if (this.groups.get(name) == Group.LOW) {
@@ -298,6 +358,13 @@ public class Algorithm extends StricterEnchant {
 		return false;
 	}
 
+	/**
+	 * Checks if is default.
+	 * 
+	 * @param name
+	 *            the name
+	 * @return true, if is default
+	 */
 	public boolean isDefault(String name) {
 		if (this.groups.containsKey(name)) {
 			if (this.groups.get(name) == Group.DEFAULT) {
@@ -307,6 +374,11 @@ public class Algorithm extends StricterEnchant {
 		return false;
 	}
 
+	/**
+	 * Gets the.
+	 * 
+	 * @return the algorithm
+	 */
 	public static Algorithm get() {
 		if (alg == null) {
 			alg = new Algorithm();

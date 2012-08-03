@@ -12,9 +12,15 @@ import org.bukkit.configuration.file.FileConfiguration;
  */
 public class Settings extends Config {
 
+	/** The wilddef. */
 	public static Double wildhigh, wildmed, wildlow, wilddef;
+
+	/** The qualdef. */
 	public static Double qualhigh, qualmed, quallow, qualdef;
+
+	/** The listdef. */
 	public static List<String> listhigh, listmed, listlow, listdef;
+
 	/**
 	 * Instantiates a new settings.
 	 * 

@@ -3,7 +3,6 @@ package net.milkycraft.configuration;
 import java.io.File;
 import java.io.IOException;
 
-
 import net.milkycraft.StricterEnchant;
 
 import org.bukkit.configuration.file.FileConfiguration;
