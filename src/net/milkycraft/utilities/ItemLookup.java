@@ -1,4 +1,4 @@
-package net.milkycraft;
+package net.milkycraft.utilities;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
