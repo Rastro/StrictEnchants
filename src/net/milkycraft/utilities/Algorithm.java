@@ -38,94 +38,20 @@ public class Algorithm extends StricterEnchant {
 	 *            the item
 	 */
 	public void cal(Player en, Map<Enchantment, Integer> e, int l, ItemStack i) {
-		if (ItemLookup.isDiamond(i)) {
-			if (isHigh(en.getName())) {
-				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh));
-			} else if (isMedium(en.getName())) {
-				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed));
-			} else if (isLow(en.getName())) {
-				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow));
-			} else if (isDefault(en.getName())) {
-				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));
-			}
-		} else if (ItemLookup.isIron(i)) {
-			if (isHigh(en.getName())) {
-				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh));
-			} else if (isMedium(en.getName())) {
-				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed));
-			} else if (isLow(en.getName())) {
-				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow));
-			} else if (isDefault(en.getName())) {
-				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));
-			}
-		} else if (ItemLookup.isGold(i)) {
-			if (isHigh(en.getName())) {
-				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh));
-			} else if (isMedium(en.getName())) {
-				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed));
-			} else if (isLow(en.getName())) {
-				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow));
-			} else if (isDefault(en.getName())) {
-				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));
-			}
-		} else if (ItemLookup.isStoneOrLeather(i)) {
-			if (isHigh(en.getName())) {
-				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh));
-			} else if (isMedium(en.getName())) {
-				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed));
-			} else if (isLow(en.getName())) {
-				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow));
-			} else if (isDefault(en.getName())) {
-				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));
-			}
-		} else if (ItemLookup.isWood(i)) {
-			if (isHigh(en.getName())) {
-				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh));
-			} else if (isMedium(en.getName())) {
-				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed));
-			} else if (isLow(en.getName())) {
-				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow));
-			} else if (isDefault(en.getName())) {
-				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));
-			}
-		} else if (ItemLookup.isChain(i)) {
-			if (isHigh(en.getName())) {
-				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh));
-			} else if (isMedium(en.getName())) {
-				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed));
-			} else if (isLow(en.getName())) {
-				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow));
-			} else if (isDefault(en.getName())) {
-				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));
-			}
-		}
-	}
-
-	/**
-	 * Intercept flow and log if needed then pass event.
-	 * 
-	 * @param enchanter
-	 *            the enchanter
-	 * @param enchants
-	 *            the enchants
-	 * @param lvl
-	 *            the lvl
-	 * @param item
-	 *            the item
-	 * @param group
-	 *            the group
-	 * @param wild
-	 *            the wild
-	 * @deprecated Will be included into a another method soon
-	 */
-	private void a(Player enchanter, Map<Enchantment, Integer> enchants,
-			int lvl, ItemStack item, Group group, Boolean wild) {
 		if (Settings.log) {
-			EnchantListener.info(enchanter.getName() + " enchanted a "
-					+ item.getType().toString().toLowerCase() + " with " + lvl
+			EnchantListener.info(en.getName() + " enchanted a "
+					+ i.getType().toString().toLowerCase() + " with " + l
 					+ " levels");
 		}
-		b(enchants, item, wild, group);
+		if (isHigh(en.getName())) {
+			b(e, i, isWild(Settings.wildhigh), Group.HIGH);
+		} else if (isMedium(en.getName())) {
+			b(e, i, isWild(Settings.wildmed), Group.MEDIUM);
+		} else if (isLow(en.getName())) {
+			b(e, i, isWild(Settings.wildlow), Group.LOW);
+		} else if (isDefault(en.getName())) {
+			b(e, i, isWild(Settings.wilddef), Group.DEFAULT);
+		}
 	}
 
 	/**
@@ -185,8 +111,14 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void c(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-
-		//Throw EnchantModifyEvent with the correct parameters
+		if (ItemLookup.isDiamond(item)) {
+		} else if (ItemLookup.isIron(item)) {
+		} else if (ItemLookup.isGold(item)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+		} else if (ItemLookup.isWood(item)) {
+		} else if (ItemLookup.isChain(item)) {
+		}
+		// Throw EnchantModifyEvent with the correct parameters
 	}
 
 	/**
@@ -203,7 +135,14 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void d(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-		//Throw EnchantModifyEvent with the correct parameters
+		if (ItemLookup.isDiamond(item)) {
+		} else if (ItemLookup.isIron(item)) {
+		} else if (ItemLookup.isGold(item)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+		} else if (ItemLookup.isWood(item)) {
+		} else if (ItemLookup.isChain(item)) {
+		}
+		// Throw EnchantModifyEvent with the correct parameters
 	}
 
 	/**
@@ -220,7 +159,14 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void e(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-		//Throw EnchantModifyEvent with the correct parameters
+		if (ItemLookup.isDiamond(item)) {
+		} else if (ItemLookup.isIron(item)) {
+		} else if (ItemLookup.isGold(item)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+		} else if (ItemLookup.isWood(item)) {
+		} else if (ItemLookup.isChain(item)) {
+		}
+		// Throw EnchantModifyEvent with the correct parameters
 	}
 
 	/**
@@ -237,7 +183,14 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void f(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-		//Throw EnchantModifyEvent with the correct parameters
+		if (ItemLookup.isDiamond(item)) {
+		} else if (ItemLookup.isIron(item)) {
+		} else if (ItemLookup.isGold(item)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+		} else if (ItemLookup.isWood(item)) {
+		} else if (ItemLookup.isChain(item)) {
+		}
+		// Throw EnchantModifyEvent with the correct parameters
 	}
 
 	/**
@@ -254,7 +207,13 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void g(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-		//Throw EnchantModifyEvent with the correct parameters
+		if (ItemLookup.isDiamond(item)) {
+		} else if (ItemLookup.isIron(item)) {
+		} else if (ItemLookup.isGold(item)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+		} else if (ItemLookup.isWood(item)) {
+		} else if (ItemLookup.isChain(item)) {
+		} // Throw EnchantModifyEvent with the correct parameters
 	}
 
 	/**
@@ -271,7 +230,13 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void h(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-		//Throw EnchantModifyEvent with the correct parameters
+		if (ItemLookup.isDiamond(item)) {
+		} else if (ItemLookup.isIron(item)) {
+		} else if (ItemLookup.isGold(item)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+		} else if (ItemLookup.isWood(item)) {
+		} else if (ItemLookup.isChain(item)) {
+		} // Throw EnchantModifyEvent with the correct parameters
 	}
 
 	/**
@@ -288,7 +253,13 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void i(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-		//Throw EnchantModifyEvent with the correct parameters
+		if (ItemLookup.isDiamond(item)) {
+		} else if (ItemLookup.isIron(item)) {
+		} else if (ItemLookup.isGold(item)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+		} else if (ItemLookup.isWood(item)) {
+		} else if (ItemLookup.isChain(item)) {
+		} // Throw EnchantModifyEvent with the correct parameters
 	}
 
 	/**
@@ -305,7 +276,13 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void j(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-		//Throw EnchantModifyEvent with the correct parameters
+		if (ItemLookup.isDiamond(item)) {
+		} else if (ItemLookup.isIron(item)) {
+		} else if (ItemLookup.isGold(item)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+		} else if (ItemLookup.isWood(item)) {
+		} else if (ItemLookup.isChain(item)) {
+		} // Throw EnchantModifyEvent with the correct parameters
 	}
 
 	/**
@@ -322,7 +299,13 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void k(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-		//Throw EnchantModifyEvent with the correct parameters
+		if (ItemLookup.isDiamond(item)) {
+		} else if (ItemLookup.isIron(item)) {
+		} else if (ItemLookup.isGold(item)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+		} else if (ItemLookup.isWood(item)) {
+		} else if (ItemLookup.isChain(item)) {
+		} // Throw EnchantModifyEvent with the correct parameters
 	}
 
 	/**
@@ -339,7 +322,14 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void l(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-		//Throw EnchantModifyEvent with the correct parameters
+		if (ItemLookup.isDiamond(item)) {
+		} else if (ItemLookup.isIron(item)) {
+		} else if (ItemLookup.isGold(item)) {
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+		} else if (ItemLookup.isWood(item)) {
+		} else if (ItemLookup.isChain(item)) {
+		}
+		// Throw EnchantModifyEvent with the correct parameters
 	}
 
 	/**
@@ -365,8 +355,9 @@ public class Algorithm extends StricterEnchant {
 	}
 
 	/**
-	 * Gets the difference between the original enchant naturally produced and the modded enchantment
-	 * Produce it into a nice list for displaying to people if Anon. enchanting is disabled
+	 * Gets the difference between the original enchant naturally produced and
+	 * the modded enchantment Produce it into a nice list for displaying to
+	 * people if Anon. enchanting is disabled
 	 * 
 	 * @param original
 	 *            the original
@@ -382,10 +373,9 @@ public class Algorithm extends StricterEnchant {
 	}
 
 	/**
-	 * Checks if its the enchanters lucky day
-	 * Uses some random to generate a chance
-	 * I added a small difference to prevent the same exact wildcard chance
-	 * Approximently .02 - .04 difference typically
+	 * Checks if its the enchanters lucky day Uses some random to generate a
+	 * chance I added a small difference to prevent the same exact wildcard
+	 * chance Approximently .02 - .04 difference typically
 	 * 
 	 * @param __
 	 *            the __
