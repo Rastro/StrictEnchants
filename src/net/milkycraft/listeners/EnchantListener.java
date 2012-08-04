@@ -1,5 +1,7 @@
 package net.milkycraft.listeners;
 
+import java.util.Map.Entry;
+
 import net.milkycraft.StricterEnchant;
 import net.milkycraft.configuration.Settings;
 import net.milkycraft.events.EnchantModifyEvent;
@@ -8,6 +10,7 @@ import net.milkycraft.utilities.Algorithm;
 import net.milkycraft.utilities.Group;
 import net.milkycraft.utilities.Utility;
 
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -61,7 +64,16 @@ public class EnchantListener extends StricterEnchant implements Listener {
 			return;
 		}
 		if(isHigh(Algorithm.getEnchanter().getName())) {
-		// Lets make a filter	Utility.getBlocked(Group.HIGH);
+		for(Entry<Enchantment, Integer> en : e.getResult().entrySet()) {
+			for(Entry<Enchantment, Integer> an : Utility.getBlocked(Group.HIGH).entrySet()) {
+				if(en.getKey().equals(an.getKey())) {
+					if(en.getValue().equals(an.getValue())) {
+						e.getResult().remove(an);
+						// Put a random enchant in? We should try to check level to find an appropriate enchant
+					}
+				}
+			}
+		}
 		} else if(isMedium(Algorithm.getEnchanter().getName())) {
 			// Lets make a filter	Utility.getBlocked(Group.MEDIUM);
 		} else if(isLow(Algorithm.getEnchanter().getName())) {
