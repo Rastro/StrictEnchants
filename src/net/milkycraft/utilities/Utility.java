@@ -1,33 +1,13 @@
 package net.milkycraft.utilities;
 
-import java.util.Map;
-
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemStack;
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class Utility.
  */
 public class Utility {
 
-	/**
-	 * Enchant.
-	 * 
-	 * @param item
-	 *            the item
-	 * @param enchants
-	 *            the enchants
+	/*
+	 * Fill this class with utility methods that dont quite need to be in
+	 * another class Access staticly, usually dont bother putting a method here
+	 * unless its used in more then one class
 	 */
-	public static void enchant(ItemStack item,
-			Map<Enchantment, Integer> enchants) {
-		if (item == null) {
-			return;
-		}
-		for (Enchantment ench : item.getEnchantments().keySet()) {
-			item.removeEnchantment(ench);
-		}
-		item.addEnchantments(enchants);
-	}
-
 }
