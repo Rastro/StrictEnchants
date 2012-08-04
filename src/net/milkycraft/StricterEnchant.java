@@ -3,6 +3,9 @@ package net.milkycraft;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.milkycraft.hooks.EntityManagerHook;
+import net.milkycraft.listeners.EnchantListener;
+import net.milkycraft.listeners.SyncListener;
 import net.milkycraft.utilities.Group;
 
 import org.bukkit.Bukkit;
@@ -34,6 +37,7 @@ public class StricterEnchant extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new SyncListener(), this);
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Timer(), 20L,
 				3600L);
+		EntityManagerHook.hook();
 	}
 
 	/*
