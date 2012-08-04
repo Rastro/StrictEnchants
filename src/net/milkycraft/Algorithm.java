@@ -17,9 +17,85 @@ public class Algorithm extends StricterEnchant {
 
 	/** The alg. */
 	public static Algorithm alg;
-
 	/**
 	 * Calculate the enchantments then call Ulility.enchant()
+	 * 
+	 * @param en
+	 *            the enchanter
+	 * @param e
+	 *            the enchants
+	 * @param l
+	 *            the lvl
+	 * @param i
+	 *            the item
+	 */
+	public void cal(Player en, Map<Enchantment, Integer> e,
+			int l, ItemStack i) {
+		if (ItemLookup.isDiamond(i)) {
+			if (isHigh(en.getName())) {
+				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh)); 
+			} else if (isMedium(en.getName())) {
+				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed)); 
+			} else if (isLow(en.getName())) {
+				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow)); 
+			} else if (isDefault(en.getName())) {
+				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));  
+			}
+		} else if (ItemLookup.isIron(i)) {
+			if (isHigh(en.getName())) {
+				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh));  
+			} else if (isMedium(en.getName())) {
+				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed));  
+			} else if (isLow(en.getName())) {
+				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow)); 
+			} else if (isDefault(en.getName())) {
+				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));  
+			}
+		} else if (ItemLookup.isGold(i)) {
+			if (isHigh(en.getName())) {
+				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh));  
+			} else if (isMedium(en.getName())) {
+				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed));  
+			} else if (isLow(en.getName())) {
+				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow));  
+			} else if (isDefault(en.getName())) {
+				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef)); 
+			}
+		} else if (ItemLookup.isStoneOrLeather(i)) {
+			if (isHigh(en.getName())) {
+				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh));  
+			} else if (isMedium(en.getName())) {
+				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed));  
+			} else if (isLow(en.getName())) {
+				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow));  
+			} else if (isDefault(en.getName())) {
+				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));  
+			}
+		} else if (ItemLookup.isWood(i)) {
+			if (isHigh(en.getName())) {
+				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh));  
+			} else if (isMedium(en.getName())) {
+				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed)); 
+			} else if (isLow(en.getName())) {
+				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow)); 
+			} else if (isDefault(en.getName())) {
+				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));  
+			}
+		} else if (ItemLookup.isChain(i)) {
+			if (isHigh(en.getName())) {
+				a(en, e, l, i, Group.HIGH, isWild(Settings.wildhigh)); 
+			} else if (isMedium(en.getName())) {
+				a(en, e, l, i, Group.MEDIUM, isWild(Settings.wildmed));
+			} else if (isLow(en.getName())) {
+				a(en, e, l, i, Group.LOW, isWild(Settings.wildlow));
+			} else if (isDefault(en.getName())) {
+				a(en, e, l, i, Group.DEFAULT, isWild(Settings.wilddef));
+			}
+		}
+	}
+
+	/**
+	 * A.
 	 * 
 	 * @param enchanter
 	 *            the enchanter
@@ -29,170 +105,21 @@ public class Algorithm extends StricterEnchant {
 	 *            the lvl
 	 * @param item
 	 *            the item
+	 * @param group
+	 *            the group
+	 * @param wild
+	 *            the wild
 	 */
-	public void analyze(Player enchanter, Map<Enchantment, Integer> enchants,
-			int lvl, ItemStack item) {
-		if (ItemLookup.isDiamond(item)) {
-			if (isHigh(enchanter.getName())) {
-				if (isWild(Settings.wildhigh)) {
-
-				} else {
-
-				}
-			} else if (isMedium(enchanter.getName())) {
-				if (isWild(Settings.wildmed)) {
-
-				} else {
-
-				}
-			} else if (isLow(enchanter.getName())) {
-				if (isWild(Settings.wildlow)) {
-
-				} else {
-
-				}
-			} else if (isDefault(enchanter.getName())) {
-				if (isWild(Settings.wilddef)) {
-
-				} else {
-
-				}
-			}
-		} else if (ItemLookup.isIron(item)) {
-			if (isHigh(enchanter.getName())) {
-				if (isWild(Settings.wildhigh)) {
-
-				} else {
-
-				}
-			} else if (isMedium(enchanter.getName())) {
-				if (isWild(Settings.wildmed)) {
-
-				} else {
-
-				}
-			} else if (isLow(enchanter.getName())) {
-				if (isWild(Settings.wildlow)) {
-
-				} else {
-
-				}
-			} else if (isDefault(enchanter.getName())) {
-				if (isWild(Settings.wilddef)) {
-
-				} else {
-
-				}
-			}
-		} else if (ItemLookup.isGold(item)) {
-			if (isHigh(enchanter.getName())) {
-				if (isWild(Settings.wildhigh)) {
-
-				} else {
-
-				}
-			} else if (isMedium(enchanter.getName())) {
-				if (isWild(Settings.wildmed)) {
-
-				} else {
-
-				}
-			} else if (isLow(enchanter.getName())) {
-				if (isWild(Settings.wildlow)) {
-
-				} else {
-
-				}
-			} else if (isDefault(enchanter.getName())) {
-				if (isWild(Settings.wilddef)) {
-
-				} else {
-
-				}
-			}
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-			if (isHigh(enchanter.getName())) {
-				if (isWild(Settings.wildhigh)) {
-
-				} else {
-
-				}
-			} else if (isMedium(enchanter.getName())) {
-				if (isWild(Settings.wildmed)) {
-
-				} else {
-
-				}
-			} else if (isLow(enchanter.getName())) {
-				if (isWild(Settings.wildlow)) {
-
-				} else {
-
-				}
-			} else if (isDefault(enchanter.getName())) {
-				if (isWild(Settings.wilddef)) {
-
-				} else {
-
-				}
-			}
-		} else if (ItemLookup.isWood(item)) {
-			if (isHigh(enchanter.getName())) {
-				if (isWild(Settings.wildhigh)) {
-
-				} else {
-
-				}
-			} else if (isMedium(enchanter.getName())) {
-				if (isWild(Settings.wildmed)) {
-
-				} else {
-
-				}
-			} else if (isLow(enchanter.getName())) {
-				if (isWild(Settings.wildlow)) {
-
-				} else {
-
-				}
-			} else if (isDefault(enchanter.getName())) {
-				if (isWild(Settings.wilddef)) {
-
-				} else {
-
-				}
-			}
-		} else if (ItemLookup.isChain(item)) {
-			if (isHigh(enchanter.getName())) {
-				if (isWild(Settings.wildhigh)) {
-
-				} else {
-
-				}
-			} else if (isMedium(enchanter.getName())) {
-				if (isWild(Settings.wildmed)) {
-
-				} else {
-
-				}
-			} else if (isLow(enchanter.getName())) {
-				if (isWild(Settings.wildlow)) {
-
-				} else {
-
-				}
-			} else if (isDefault(enchanter.getName())) {
-				if (isWild(Settings.wilddef)) {
-
-				} else {
-
-				}
-			}
-		}
+	private void a(Player enchanter, Map<Enchantment, Integer> enchants,
+			int lvl, ItemStack item, Group group, Boolean wild) {
+		EnchantListener.info(enchanter.getName() + " enchanted a "
+				+ item.getType().toString().toLowerCase() + " with " + lvl
+				+ " levels");
+		b(enchants, item, wild, group);
 	}
-
+	
 	/**
-	 * A.
+	 * B.
 	 * 
 	 * @param ens
 	 *            the ens
@@ -203,76 +130,199 @@ public class Algorithm extends StricterEnchant {
 	 * @param group
 	 *            the group
 	 */
-	public void a(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+	private void b(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
 			Group group) {
-		if (ItemLookup.isBow(item)) {
-			if (wild) {
-				if (ens.containsKey(Enchantment.ARROW_DAMAGE)) {
-					int level = ens.get(Enchantment.ARROW_DAMAGE);
-					if (level <= 2) {
-						ens.remove(Enchantment.ARROW_DAMAGE);
-						ens.put(Enchantment.ARROW_DAMAGE,
-								level
-										+ (int) (Math.random() * (1 + getMultiplier(group))));
-					}
-				} else if (ens.containsKey(Enchantment.ARROW_FIRE)
-						&& (getMultiplier(group) >= 0.45)) {
-					ens.remove(Enchantment.ARROW_FIRE);
-					ens.put(Enchantment.ARROW_FIRE, 2);
-				} else if (!ens.containsKey(Enchantment.ARROW_INFINITE)
-						&& (getMultiplier(group) >= 0.65)) {
-					ens.remove(Enchantment.ARROW_INFINITE);
-					ens.put(Enchantment.ARROW_INFINITE, 1);
-				} else if (!ens.containsKey(Enchantment.ARROW_KNOCKBACK)
-						&& (getMultiplier(group) >= 0.30)) {
-					ens.remove(Enchantment.ARROW_KNOCKBACK);
-					ens.put(Enchantment.ARROW_KNOCKBACK, 1);
-				}
-			} else {
-				if (getMultiplier(group) <= 10) {
-					if (ens.containsKey(Enchantment.ARROW_DAMAGE)) {
-						int level = ens.get(Enchantment.ARROW_DAMAGE);
-						if (level == 5) {
-							ens.remove(Enchantment.ARROW_DAMAGE);
-							ens.put(Enchantment.ARROW_DAMAGE, 2);
-						}
-					} else if (ens.containsKey(Enchantment.ARROW_FIRE)) {
-						ens.remove(Enchantment.ARROW_FIRE);
-						ens.put(Enchantment.ARROW_FIRE, 2);
-					} else if (ens.containsKey(Enchantment.ARROW_INFINITE)) {
-						ens.remove(Enchantment.ARROW_INFINITE);
-						ens.put(Enchantment.ARROW_INFINITE, 1);
-					} else if (ens.containsKey(Enchantment.ARROW_KNOCKBACK)) {
-						ens.remove(Enchantment.ARROW_KNOCKBACK);
-						ens.put(Enchantment.ARROW_KNOCKBACK, 1);
-					}
-				} else if (getMultiplier(group) <= 20) {
-
-				} else if (getMultiplier(group) <= 30) {
-
-				} else if (getMultiplier(group) <= 40) {
-
-				} else if (getMultiplier(group) <= 50) {
-
-				} else if (getMultiplier(group) <= 60) {
-
-				} else if (getMultiplier(group) <= 70) {
-
-				} else if (getMultiplier(group) <= 80) {
-
-				} else if (getMultiplier(group) <= 90) {
-
-				} else if (getMultiplier(group) <= 100) {
-
-				}
-			}
-		} else {
-			if (wild) {
-
-			} else {
-
-			}
+		if(getMultiplier(group) <= 10) {
+			c(ens, item, wild, group);
+		} else if (getMultiplier(group) <= 20) {
+			d(ens, item, wild, group);
+		} else if (getMultiplier(group) <= 30) {
+			e(ens, item, wild, group);
+		} else if (getMultiplier(group) <= 40) {
+			f(ens, item, wild, group);
+		} else if (getMultiplier(group) <= 50) {
+			g(ens, item, wild, group);
+		} else if (getMultiplier(group) <= 60) {
+			h(ens, item, wild, group);
+		} else if (getMultiplier(group) <= 70) {
+			i(ens, item, wild, group);
+		} else if (getMultiplier(group) <= 80) {
+			j(ens, item, wild, group);
+		} else if (getMultiplier(group) <= 90) {
+			k(ens, item, wild, group);
+		} else if (getMultiplier(group) < 100) {
+			l(ens, item, wild, group);
 		}
+	}
+	
+	/**
+	 * Provide an enchantment 0-9% of vanilla enchant
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
+	private void c(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+			Group group) {
+		
+	}
+	
+	/**
+	 * Provide an enchantment 10-19% of vanilla enchant
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
+	private void d(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+			Group group) {
+		
+	}
+	
+	/**
+	 * Provide an enchantment 20-29% of vanilla enchant
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
+	private void e(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+			Group group) {
+		
+	}
+	
+	/**
+	 * Provide an enchantment 30-39% of vanilla enchant
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
+	private void f(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+			Group group) {
+		
+	}
+	
+	/**
+	 * Provide an enchantment 40-49% of vanilla enchant
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
+	private void g(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+			Group group) {
+		
+	}
+	
+	/**
+	 * Provide an enchantment 50-59% of vanilla enchant
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
+	private void h(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+			Group group) {
+		
+	}
+	
+	/**
+	 * Provide an enchantment 60-69% of vanilla enchant
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
+	private void i(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+			Group group) {
+		
+	}
+	
+	/**
+	 * Provide an enchantment 70-79% of vanilla enchant
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
+	private void j(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+			Group group) {
+		
+	}
+	
+	/**
+	 * Provide an enchantment 80-89% of vanilla enchant
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
+	private void k(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+			Group group) {
+		
+	}
+	
+	/**
+	 * Provide an enchantment 90-99% of vanilla enchant
+	 * 
+	 * @param ens
+	 *            the ens
+	 * @param item
+	 *            the item
+	 * @param wild
+	 *            the wild
+	 * @param group
+	 *            the group
+	 */
+	private void l(Map<Enchantment, Integer> ens, ItemStack item, Boolean wild,
+			Group group) {
+		
 	}
 
 	/**
@@ -282,7 +332,7 @@ public class Algorithm extends StricterEnchant {
 	 *            the __
 	 * @return the boolean
 	 */
-	public static Boolean isWild(Double __) {
+	private static Boolean isWild(Double __) {
 		double _ = (__ / 100);
 		if (Math.random() <= (_ - (_ / 100))) {
 			return true;
@@ -297,7 +347,7 @@ public class Algorithm extends StricterEnchant {
 	 *            the group
 	 * @return the multiplier
 	 */
-	public static double getMultiplier(Group group) {
+	private static double getMultiplier(Group group) {
 		if (group == Group.HIGH) {
 			return Settings.qualhigh / 100;
 		} else if (group == Group.MEDIUM) {
@@ -317,7 +367,7 @@ public class Algorithm extends StricterEnchant {
 	 *            the name
 	 * @return true, if is high
 	 */
-	public boolean isHigh(String name) {
+	private boolean isHigh(String name) {
 		if (this.groups.containsKey(name)) {
 			if (this.groups.get(name) == Group.HIGH) {
 				return true;
@@ -333,7 +383,7 @@ public class Algorithm extends StricterEnchant {
 	 *            the name
 	 * @return true, if is medium
 	 */
-	public boolean isMedium(String name) {
+	private boolean isMedium(String name) {
 		if (this.groups.containsKey(name)) {
 			if (this.groups.get(name) == Group.MEDIUM) {
 				return true;
@@ -349,7 +399,7 @@ public class Algorithm extends StricterEnchant {
 	 *            the name
 	 * @return true, if is low
 	 */
-	public boolean isLow(String name) {
+	private boolean isLow(String name) {
 		if (this.groups.containsKey(name)) {
 			if (this.groups.get(name) == Group.LOW) {
 				return true;
@@ -365,7 +415,7 @@ public class Algorithm extends StricterEnchant {
 	 *            the name
 	 * @return true, if is default
 	 */
-	public boolean isDefault(String name) {
+	private boolean isDefault(String name) {
 		if (this.groups.containsKey(name)) {
 			if (this.groups.get(name) == Group.DEFAULT) {
 				return true;
