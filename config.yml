@@ -5,6 +5,13 @@
 # GeneralQuality is just the basic quality of enchants out of 100…
 # Vanilla enchantments are scaled at 50. 
 # BlockedEnchants will be completely blocked from enchanted items
+# If AnonymousEnchanting is set to false, the player is alerted their enchant was modified 
+# LogEnchant simply sends a log message to console for enchants 
+# Hooking into EntityManager is useful for blocking enchanting for certain groups
+General:
+  AnonymousEnchanting: true
+  LogEnchants: true
+  HookEntityManagerIfInstalled: true
 Groups:
   High:
     WildcardChance: 5
