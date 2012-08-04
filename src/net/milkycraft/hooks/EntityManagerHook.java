@@ -10,6 +10,9 @@ public class EntityManagerHook extends EnchantListener {
 
 	public static EntityManagerAPI api;
 
+	/**
+	 * Hook.
+	 */
 	public static void hook() {
 		if (Settings.hook) {
 			if (Bukkit.getPluginManager().getPlugin("EntityManager") != null) {
