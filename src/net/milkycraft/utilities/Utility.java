@@ -2,7 +2,6 @@ package net.milkycraft.utilities;
 
 import java.util.List;
 import java.util.Map;
-
 import net.milkycraft.StricterEnchant;
 import net.milkycraft.configuration.Settings;
 
