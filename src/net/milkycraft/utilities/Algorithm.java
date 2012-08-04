@@ -10,6 +10,7 @@ import net.milkycraft.listeners.EnchantListener;
 import net.milkycraft.utilities.Utility;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -48,16 +49,16 @@ public class Algorithm extends StricterEnchant {
 		}
 		if (isHigh(en.getName())) {
 			b(e, i, isWild(Settings.wildhigh), l, Group.HIGH);
-			Utility.debug("Wild: "  + isWild(Settings.wildhigh));
+			Utility.debug("Wild: " + isWild(Settings.wildhigh));
 		} else if (isMedium(en.getName())) {
 			b(e, i, isWild(Settings.wildmed), l, Group.MEDIUM);
-			Utility.debug("Wild: "  + isWild(Settings.wildmed));
+			Utility.debug("Wild: " + isWild(Settings.wildmed));
 		} else if (isLow(en.getName())) {
 			b(e, i, isWild(Settings.wildlow), l, Group.LOW);
-			Utility.debug("Wild: "  + isWild(Settings.wildlow));
+			Utility.debug("Wild: " + isWild(Settings.wildlow));
 		} else if (isDefault(en.getName())) {
 			b(e, i, isWild(Settings.wilddef), l, Group.DEFAULT);
-			Utility.debug("Wild: "  + isWild(Settings.wilddef));
+			Utility.debug("Wild: " + isWild(Settings.wilddef));
 		}
 	}
 
@@ -115,7 +116,8 @@ public class Algorithm extends StricterEnchant {
 	}
 
 	/**
-	 * Provide an enchantment 0-9% of vanilla enchant.
+	 * Provide an enchantment 0-9% of vanilla enchant. A wildcard at this level
+	 * should be bad, but still lucky for the circumstance
 	 * 
 	 * @param ens
 	 *            the ens
@@ -128,17 +130,145 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void c(Map<Enchantment, Integer> ens, ItemStack item, int l,
 			Boolean wild, Group group) {
-		if (ItemLookup.isDiamond(item)) {
-		} else if (ItemLookup.isIron(item)) {
-		} else if (ItemLookup.isGold(item)) {
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-		} else if (ItemLookup.isWood(item)) {
-		} else if (ItemLookup.isChain(item)) {
-		}
-		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
 			this.res = new HashMap<Enchantment, Integer>();
 		}
+		if (ItemLookup.isDiamond(item)) {
+			if (!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							if(item.getType() == Material.DIAMOND_CHESTPLATE) {
+								this.res.put(Enchantment.PROTECTION_EXPLOSIONS, 1);
+							} else if(item.getType() == Material.DIAMOND_SWORD) {
+								this.res.put(Enchantment.DAMAGE_ARTHROPODS, 1);
+							}
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 3);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code 
+			}
+		} else if (ItemLookup.isIron(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isGold(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isWood(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 1);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isChain(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {							
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isBow(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		}
+
 		EnchantModifyEvent event = new EnchantModifyEvent(item, l, ens,
 				this.res);
 		Bukkit.getPluginManager().callEvent(event);
@@ -167,6 +297,7 @@ public class Algorithm extends StricterEnchant {
 		} else if (ItemLookup.isStoneOrLeather(item)) {
 		} else if (ItemLookup.isWood(item)) {
 		} else if (ItemLookup.isChain(item)) {
+		} else if (ItemLookup.isBow(item)) {
 		}
 		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
@@ -199,6 +330,7 @@ public class Algorithm extends StricterEnchant {
 		} else if (ItemLookup.isStoneOrLeather(item)) {
 		} else if (ItemLookup.isWood(item)) {
 		} else if (ItemLookup.isChain(item)) {
+		} else if (ItemLookup.isBow(item)) {
 		}
 		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
@@ -231,6 +363,7 @@ public class Algorithm extends StricterEnchant {
 		} else if (ItemLookup.isStoneOrLeather(item)) {
 		} else if (ItemLookup.isWood(item)) {
 		} else if (ItemLookup.isChain(item)) {
+		} else if (ItemLookup.isBow(item)) {
 		}
 		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
@@ -263,6 +396,7 @@ public class Algorithm extends StricterEnchant {
 		} else if (ItemLookup.isStoneOrLeather(item)) {
 		} else if (ItemLookup.isWood(item)) {
 		} else if (ItemLookup.isChain(item)) {
+		} else if (ItemLookup.isBow(item)) {
 		}
 		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
@@ -295,6 +429,7 @@ public class Algorithm extends StricterEnchant {
 		} else if (ItemLookup.isStoneOrLeather(item)) {
 		} else if (ItemLookup.isWood(item)) {
 		} else if (ItemLookup.isChain(item)) {
+		} else if (ItemLookup.isBow(item)) {
 		}
 		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
@@ -327,6 +462,7 @@ public class Algorithm extends StricterEnchant {
 		} else if (ItemLookup.isStoneOrLeather(item)) {
 		} else if (ItemLookup.isWood(item)) {
 		} else if (ItemLookup.isChain(item)) {
+		} else if (ItemLookup.isBow(item)) {
 		}
 		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
@@ -359,6 +495,7 @@ public class Algorithm extends StricterEnchant {
 		} else if (ItemLookup.isStoneOrLeather(item)) {
 		} else if (ItemLookup.isWood(item)) {
 		} else if (ItemLookup.isChain(item)) {
+		} else if (ItemLookup.isBow(item)) {
 		}
 		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
@@ -391,6 +528,7 @@ public class Algorithm extends StricterEnchant {
 		} else if (ItemLookup.isStoneOrLeather(item)) {
 		} else if (ItemLookup.isWood(item)) {
 		} else if (ItemLookup.isChain(item)) {
+		} else if (ItemLookup.isBow(item)) {
 		}
 		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
@@ -423,6 +561,7 @@ public class Algorithm extends StricterEnchant {
 		} else if (ItemLookup.isStoneOrLeather(item)) {
 		} else if (ItemLookup.isWood(item)) {
 		} else if (ItemLookup.isChain(item)) {
+		} else if (ItemLookup.isBow(item)) {
 		}
 		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
