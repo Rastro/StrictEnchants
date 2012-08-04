@@ -9,7 +9,8 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 
-// TODO: Auto-generated Javadoc
+// TODO: Extend EnchantItemEvent so we naturally get all the proper arguements 
+// That will improve the over-parameter problem
 public class EnchantModifyEvent extends Event implements Cancellable {
 	private static final HandlerList handlers = new HandlerList();
 	private final ItemStack item;
