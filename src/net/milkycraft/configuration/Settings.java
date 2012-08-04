@@ -20,6 +20,8 @@ public class Settings extends Config {
 
 	/** The listdef. */
 	public static List<String> listhigh, listmed, listlow, listdef;
+	
+	public static Boolean hook, anon, log;
 
 	/**
 	 * Instantiates a new settings.
@@ -68,6 +70,9 @@ public class Settings extends Config {
 		listmed = config.getStringList("Groups.Medium.BlockedEnchants");
 		listlow = config.getStringList("Groups.High.BlockedEnchants");
 		listdef = config.getStringList("Groups.High.BlockedEnchants");
+		hook = config.getBoolean("General.HookEntityManagerIfInstalled");
+		anon = config.getBoolean("General.AnonymousEnchanting");
+		log = config.getBoolean("General.LogEnchants");
 	}
 
 	/**
