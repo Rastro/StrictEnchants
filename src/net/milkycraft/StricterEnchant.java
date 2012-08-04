@@ -60,6 +60,70 @@ public class StricterEnchant extends JavaPlugin {
 	public static void info(String info) {
 		Bukkit.getLogger().info("[StricterEnchant] " + info);
 	}
+
+/**
+ * Checks if is high.
+ * 
+ * @param name
+ *            the name
+ * @return true, if is high
+ */
+public boolean isHigh(String name) {
+	if (this.groups.containsKey(name)) {
+		if (this.groups.get(name) == Group.HIGH) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Checks if is medium.
+ * 
+ * @param name
+ *            the name
+ * @return true, if is medium
+ */
+public boolean isMedium(String name) {
+	if (this.groups.containsKey(name)) {
+		if (this.groups.get(name) == Group.MEDIUM) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Checks if is low.
+ * 
+ * @param name
+ *            the name
+ * @return true, if is low
+ */
+public boolean isLow(String name) {
+	if (this.groups.containsKey(name)) {
+		if (this.groups.get(name) == Group.LOW) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Checks if is default.
+ * 
+ * @param name
+ *            the name
+ * @return true, if is default
+ */
+public boolean isDefault(String name) {
+	if (this.groups.containsKey(name)) {
+		if (this.groups.get(name) == Group.DEFAULT) {
+			return true;
+		}
+	}
+	return false;
+}
 }
 
 class Timer extends SyncListener implements Runnable {

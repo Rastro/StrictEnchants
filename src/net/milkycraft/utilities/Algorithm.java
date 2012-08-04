@@ -15,7 +15,10 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-// TODO: Auto-generated Javadoc
+// TODO: Add better javadoc
+// TODO: Add more debugging
+// TODO: Add the wildcard code 
+// TODO: Test and adjust the numbers
 /**
  * The Class Algorithm.
  * 
@@ -28,7 +31,7 @@ public class Algorithm extends StricterEnchant {
 	/** The alg. */
 	public static Algorithm alg;
 	public Map<Enchantment, Integer> res;
-
+	public static Player enchanter;
 	/**
 	 * Calculate the enchantments then call Ulility.enchant()
 	 * 
@@ -47,6 +50,7 @@ public class Algorithm extends StricterEnchant {
 					+ i.getType().toString().toLowerCase() + " with " + l
 					+ " levels");
 		}
+		Algorithm.setEnchanter(en);
 		if (isHigh(en.getName())) {
 			b(e, i, isWild(Settings.wildhigh), l, Group.HIGH);
 			Utility.debug("Wild: " + isWild(Settings.wildhigh));
@@ -108,7 +112,7 @@ public class Algorithm extends StricterEnchant {
 			Utility.debug("Multiplier <= 80");
 		} else if (getMultiplier(group) <= 90) {
 			k(ens, item, l, wild, group);
-			Utility.debug("Multiplier <= 00");
+			Utility.debug("Multiplier <= 90");
 		} else if (getMultiplier(group) < 100) {
 			l(ens, item, l, wild, group);
 			Utility.debug("Multiplier < 100");
@@ -290,19 +294,145 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void d(Map<Enchantment, Integer> ens, ItemStack item, int l,
 			Boolean wild, Group group) {
-
-		if (ItemLookup.isDiamond(item)) {
-		} else if (ItemLookup.isIron(item)) {
-		} else if (ItemLookup.isGold(item)) {
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-		} else if (ItemLookup.isWood(item)) {
-		} else if (ItemLookup.isChain(item)) {
-		} else if (ItemLookup.isBow(item)) {
-		}
-		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
 			this.res = new HashMap<Enchantment, Integer>();
 		}
+		if (ItemLookup.isDiamond(item)) {
+			if (!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							if(item.getType() == Material.DIAMOND_CHESTPLATE) {
+								this.res.put(Enchantment.PROTECTION_EXPLOSIONS, 1);
+							} else if(item.getType() == Material.DIAMOND_SWORD) {
+								this.res.put(Enchantment.DAMAGE_ARTHROPODS, 1);
+							}
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 3);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code 
+			}
+		} else if (ItemLookup.isIron(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isGold(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isWood(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 1);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isChain(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {							
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isBow(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		}
+
 		EnchantModifyEvent event = new EnchantModifyEvent(item, l, ens,
 				this.res);
 		Bukkit.getPluginManager().callEvent(event);
@@ -324,18 +454,145 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void e(Map<Enchantment, Integer> ens, ItemStack item, int l,
 			Boolean wild, Group group) {
-		if (ItemLookup.isDiamond(item)) {
-		} else if (ItemLookup.isIron(item)) {
-		} else if (ItemLookup.isGold(item)) {
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-		} else if (ItemLookup.isWood(item)) {
-		} else if (ItemLookup.isChain(item)) {
-		} else if (ItemLookup.isBow(item)) {
-		}
-		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
 			this.res = new HashMap<Enchantment, Integer>();
 		}
+		if (ItemLookup.isDiamond(item)) {
+			if (!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							if(item.getType() == Material.DIAMOND_CHESTPLATE) {
+								this.res.put(Enchantment.PROTECTION_EXPLOSIONS, 1);
+							} else if(item.getType() == Material.DIAMOND_SWORD) {
+								this.res.put(Enchantment.DAMAGE_ARTHROPODS, 1);
+							}
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 3);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code 
+			}
+		} else if (ItemLookup.isIron(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isGold(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isWood(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 1);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isChain(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {							
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isBow(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		}
+
 		EnchantModifyEvent event = new EnchantModifyEvent(item, l, ens,
 				this.res);
 		Bukkit.getPluginManager().callEvent(event);
@@ -357,18 +614,145 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void f(Map<Enchantment, Integer> ens, ItemStack item, int l,
 			Boolean wild, Group group) {
-		if (ItemLookup.isDiamond(item)) {
-		} else if (ItemLookup.isIron(item)) {
-		} else if (ItemLookup.isGold(item)) {
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-		} else if (ItemLookup.isWood(item)) {
-		} else if (ItemLookup.isChain(item)) {
-		} else if (ItemLookup.isBow(item)) {
-		}
-		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
 			this.res = new HashMap<Enchantment, Integer>();
 		}
+		if (ItemLookup.isDiamond(item)) {
+			if (!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							if(item.getType() == Material.DIAMOND_CHESTPLATE) {
+								this.res.put(Enchantment.PROTECTION_EXPLOSIONS, 1);
+							} else if(item.getType() == Material.DIAMOND_SWORD) {
+								this.res.put(Enchantment.DAMAGE_ARTHROPODS, 1);
+							}
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 3);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code 
+			}
+		} else if (ItemLookup.isIron(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isGold(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isWood(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 1);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isChain(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {							
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isBow(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		}
+
 		EnchantModifyEvent event = new EnchantModifyEvent(item, l, ens,
 				this.res);
 		Bukkit.getPluginManager().callEvent(event);
@@ -390,18 +774,145 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void g(Map<Enchantment, Integer> ens, ItemStack item, int l,
 			Boolean wild, Group group) {
-		if (ItemLookup.isDiamond(item)) {
-		} else if (ItemLookup.isIron(item)) {
-		} else if (ItemLookup.isGold(item)) {
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-		} else if (ItemLookup.isWood(item)) {
-		} else if (ItemLookup.isChain(item)) {
-		} else if (ItemLookup.isBow(item)) {
-		}
-		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
 			this.res = new HashMap<Enchantment, Integer>();
 		}
+		if (ItemLookup.isDiamond(item)) {
+			if (!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							if(item.getType() == Material.DIAMOND_CHESTPLATE) {
+								this.res.put(Enchantment.PROTECTION_EXPLOSIONS, 1);
+							} else if(item.getType() == Material.DIAMOND_SWORD) {
+								this.res.put(Enchantment.DAMAGE_ARTHROPODS, 1);
+							}
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 3);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code 
+			}
+		} else if (ItemLookup.isIron(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isGold(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isWood(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 1);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isChain(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {							
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isBow(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		}
+
 		EnchantModifyEvent event = new EnchantModifyEvent(item, l, ens,
 				this.res);
 		Bukkit.getPluginManager().callEvent(event);
@@ -423,18 +934,145 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void h(Map<Enchantment, Integer> ens, ItemStack item, int l,
 			Boolean wild, Group group) {
-		if (ItemLookup.isDiamond(item)) {
-		} else if (ItemLookup.isIron(item)) {
-		} else if (ItemLookup.isGold(item)) {
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-		} else if (ItemLookup.isWood(item)) {
-		} else if (ItemLookup.isChain(item)) {
-		} else if (ItemLookup.isBow(item)) {
-		}
-		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
 			this.res = new HashMap<Enchantment, Integer>();
 		}
+		if (ItemLookup.isDiamond(item)) {
+			if (!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							if(item.getType() == Material.DIAMOND_CHESTPLATE) {
+								this.res.put(Enchantment.PROTECTION_EXPLOSIONS, 1);
+							} else if(item.getType() == Material.DIAMOND_SWORD) {
+								this.res.put(Enchantment.DAMAGE_ARTHROPODS, 1);
+							}
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 3);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code 
+			}
+		} else if (ItemLookup.isIron(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isGold(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isWood(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 1);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isChain(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {							
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isBow(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		}
+
 		EnchantModifyEvent event = new EnchantModifyEvent(item, l, ens,
 				this.res);
 		Bukkit.getPluginManager().callEvent(event);
@@ -456,18 +1094,145 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void i(Map<Enchantment, Integer> ens, ItemStack item, int l,
 			Boolean wild, Group group) {
-		if (ItemLookup.isDiamond(item)) {
-		} else if (ItemLookup.isIron(item)) {
-		} else if (ItemLookup.isGold(item)) {
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-		} else if (ItemLookup.isWood(item)) {
-		} else if (ItemLookup.isChain(item)) {
-		} else if (ItemLookup.isBow(item)) {
-		}
-		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
 			this.res = new HashMap<Enchantment, Integer>();
 		}
+		if (ItemLookup.isDiamond(item)) {
+			if (!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							if(item.getType() == Material.DIAMOND_CHESTPLATE) {
+								this.res.put(Enchantment.PROTECTION_EXPLOSIONS, 1);
+							} else if(item.getType() == Material.DIAMOND_SWORD) {
+								this.res.put(Enchantment.DAMAGE_ARTHROPODS, 1);
+							}
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 3);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code 
+			}
+		} else if (ItemLookup.isIron(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isGold(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isWood(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 1);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isChain(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {							
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isBow(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		}
+
 		EnchantModifyEvent event = new EnchantModifyEvent(item, l, ens,
 				this.res);
 		Bukkit.getPluginManager().callEvent(event);
@@ -489,18 +1254,145 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void j(Map<Enchantment, Integer> ens, ItemStack item, int l,
 			Boolean wild, Group group) {
-		if (ItemLookup.isDiamond(item)) {
-		} else if (ItemLookup.isIron(item)) {
-		} else if (ItemLookup.isGold(item)) {
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-		} else if (ItemLookup.isWood(item)) {
-		} else if (ItemLookup.isChain(item)) {
-		} else if (ItemLookup.isBow(item)) {
-		}
-		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
 			this.res = new HashMap<Enchantment, Integer>();
 		}
+		if (ItemLookup.isDiamond(item)) {
+			if (!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							if(item.getType() == Material.DIAMOND_CHESTPLATE) {
+								this.res.put(Enchantment.PROTECTION_EXPLOSIONS, 1);
+							} else if(item.getType() == Material.DIAMOND_SWORD) {
+								this.res.put(Enchantment.DAMAGE_ARTHROPODS, 1);
+							}
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 3);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code 
+			}
+		} else if (ItemLookup.isIron(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isGold(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isWood(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 1);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isChain(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {							
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isBow(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+						} else if (in == 2) {
+						} else if (in == 3) {
+							this.res.put(en, 1);
+						} else if (in == 4) {
+							this.res.put(en, 2);
+						} else if (in == 5) {
+							this.res.put(en, 2);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		}
+
 		EnchantModifyEvent event = new EnchantModifyEvent(item, l, ens,
 				this.res);
 		Bukkit.getPluginManager().callEvent(event);
@@ -522,18 +1414,151 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void k(Map<Enchantment, Integer> ens, ItemStack item, int l,
 			Boolean wild, Group group) {
-		if (ItemLookup.isDiamond(item)) {
-		} else if (ItemLookup.isIron(item)) {
-		} else if (ItemLookup.isGold(item)) {
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-		} else if (ItemLookup.isWood(item)) {
-		} else if (ItemLookup.isChain(item)) {
-		} else if (ItemLookup.isBow(item)) {
-		}
-		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
 			this.res = new HashMap<Enchantment, Integer>();
 		}
+		if (ItemLookup.isDiamond(item)) {
+			if (!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code 
+			}
+		} else if (ItemLookup.isIron(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isGold(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isWood(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isChain(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isBow(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 1);
+						} else if (in == 3) {
+							this.res.put(en, 2);
+						} else if (in == 4) {
+							this.res.put(en, 3);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		}
+
 		EnchantModifyEvent event = new EnchantModifyEvent(item, l, ens,
 				this.res);
 		Bukkit.getPluginManager().callEvent(event);
@@ -555,22 +1580,154 @@ public class Algorithm extends StricterEnchant {
 	 */
 	private void l(Map<Enchantment, Integer> ens, ItemStack item, int l,
 			Boolean wild, Group group) {
-		if (ItemLookup.isDiamond(item)) {
-		} else if (ItemLookup.isIron(item)) {
-		} else if (ItemLookup.isGold(item)) {
-		} else if (ItemLookup.isStoneOrLeather(item)) {
-		} else if (ItemLookup.isWood(item)) {
-		} else if (ItemLookup.isChain(item)) {
-		} else if (ItemLookup.isBow(item)) {
-		}
-		// Create the enchantment map, ensures no wasted objects
 		if (this.res == null) {
 			this.res = new HashMap<Enchantment, Integer>();
 		}
+		if (ItemLookup.isDiamond(item)) {
+			if (!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 2);
+						} else if (in == 3) {
+							this.res.put(en, 3);
+						} else if (in == 4) {
+							this.res.put(en, 4);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code 
+			}
+		} else if (ItemLookup.isIron(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 2);
+						} else if (in == 3) {
+							this.res.put(en, 3);
+						} else if (in == 4) {
+							this.res.put(en, 4);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isGold(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 2);
+						} else if (in == 3) {
+							this.res.put(en, 3);
+						} else if (in == 4) {
+							this.res.put(en, 4);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isStoneOrLeather(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 2);
+						} else if (in == 3) {
+							this.res.put(en, 3);
+						} else if (in == 4) {
+							this.res.put(en, 4);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isWood(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 2);
+						} else if (in == 3) {
+							this.res.put(en, 3);
+						} else if (in == 4) {
+							this.res.put(en, 4);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isChain(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 2);
+						} else if (in == 3) {
+							this.res.put(en, 3);
+						} else if (in == 4) {
+							this.res.put(en, 4);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		} else if (ItemLookup.isBow(item)) {
+			if(!wild) {
+				for (Enchantment en : ens.keySet()) {
+					for (Integer in : ens.values()) {
+						if (in == 1) {
+							this.res.put(en, 1);
+						} else if (in == 2) {
+							this.res.put(en, 2);
+						} else if (in == 3) {
+							this.res.put(en, 3);
+						} else if (in == 4) {
+							this.res.put(en, 4);
+						} else if (in == 5) {
+							this.res.put(en, 4);
+						}
+					}
+				}
+			} else {
+				// Add nifty wild card code
+			}
+		}
+
 		EnchantModifyEvent event = new EnchantModifyEvent(item, l, ens,
 				this.res);
 		Bukkit.getPluginManager().callEvent(event);
-		// Does
 		this.res.clear();
 	}
 
@@ -611,68 +1768,15 @@ public class Algorithm extends StricterEnchant {
 		return 0;
 	}
 
-	/**
-	 * Checks if is high.
-	 * 
-	 * @param name
-	 *            the name
-	 * @return true, if is high
-	 */
-	private boolean isHigh(String name) {
-		if (this.groups.containsKey(name)) {
-			if (this.groups.get(name) == Group.HIGH) {
-				return true;
-			}
-		}
-		return false;
+	
+	
+	
+	public static Player getEnchanter() {
+		return enchanter;
 	}
-
-	/**
-	 * Checks if is medium.
-	 * 
-	 * @param name
-	 *            the name
-	 * @return true, if is medium
-	 */
-	private boolean isMedium(String name) {
-		if (this.groups.containsKey(name)) {
-			if (this.groups.get(name) == Group.MEDIUM) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Checks if is low.
-	 * 
-	 * @param name
-	 *            the name
-	 * @return true, if is low
-	 */
-	private boolean isLow(String name) {
-		if (this.groups.containsKey(name)) {
-			if (this.groups.get(name) == Group.LOW) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Checks if is default.
-	 * 
-	 * @param name
-	 *            the name
-	 * @return true, if is default
-	 */
-	private boolean isDefault(String name) {
-		if (this.groups.containsKey(name)) {
-			if (this.groups.get(name) == Group.DEFAULT) {
-				return true;
-			}
-		}
-		return false;
+	
+	public static void setEnchanter(Player enchanterr) {
+		enchanter = enchanterr;
 	}
 
 	/**

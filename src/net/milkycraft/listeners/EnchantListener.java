@@ -60,6 +60,15 @@ public class EnchantListener extends StricterEnchant implements Listener {
 		if(e.getItem() == null) {
 			return;
 		}
+		if(isHigh(Algorithm.getEnchanter().getName())) {
+		// Lets make a filter	Utility.getBlocked(Group.HIGH);
+		} else if(isMedium(Algorithm.getEnchanter().getName())) {
+			// Lets make a filter	Utility.getBlocked(Group.MEDIUM);
+		} else if(isLow(Algorithm.getEnchanter().getName())) {
+			// Lets make a filter	Utility.getBlocked(Group.LOW);
+		} else if(isDefault(Algorithm.getEnchanter().getName())) {
+			// Lets make a filter	Utility.getBlocked(Group.DEFAULT);
+		}
 			e.enchant(e.getItem(), e.getResult());
 			Utility.debug("Enchanted Item was modifed via EnchantModifyEvent");
 	}

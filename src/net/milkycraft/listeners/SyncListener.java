@@ -182,4 +182,5 @@ public class SyncListener extends StricterEnchant implements Listener {
 		Utility.debug("Removing " + name + " from queue");
 		this.queue.remove(name);
 	}
+
 }

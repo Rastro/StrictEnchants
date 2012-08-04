@@ -2,8 +2,7 @@
 # Groups are defined via permissions, groups have NO inheritance. No perms = Default
 # This plugin does not affect OPs, enchants will be normal enchants with OP
 # WildcardChance is the possibility to get a good enchant for your level
-# GeneralQuality is just the basic quality of enchants out of 100…
-# Vanilla enchantments are scaled at 50. 
+# GeneralQuality is just the basic quality of enchants out of 100, higher = better enchant
 # BlockedEnchants will be completely blocked from enchanted items
 # If AnonymousEnchanting is set to false, the player is alerted their enchant was modified 
 # LogEnchant simply sends a log message to console for enchants 
@@ -17,22 +16,22 @@ General:
 Groups:
   High:
     WildcardChance: 5
-    GeneralQualityOfEnchants: 45
+    GeneralQualityOfEnchants: 85
     BlockedEnchants:
     - Bane of Arthopods V
     - Bane of Arthopods IV
   Medium:
     WildcardChance: 3
-    GeneralQualityOfEnchants: 35
+    GeneralQualityOfEnchants: 65
     BlockedEnchants: 
     - Bane of Arthopods V
   Low:
     WildcardChance: 2
-    GeneralQualityOfEnchants: 25
+    GeneralQualityOfEnchants: 55
     BlockedEnchants: 
     - Bane of Arthopods V
   Default:
     WildcardChance: 1
-    GeneralQualityOfEnchants: 20
+    GeneralQualityOfEnchants: 40
     BlockedEnchants:
     - Bane of Arthopods V
