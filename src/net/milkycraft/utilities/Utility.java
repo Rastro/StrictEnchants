@@ -6,7 +6,6 @@ import java.util.Map;
 import net.milkycraft.StricterEnchant;
 import net.milkycraft.configuration.Settings;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -16,6 +15,7 @@ import org.bukkit.entity.Player;
  */
 public class Utility {
 	public static Map<Enchantment, Integer> blocked;
+	public static List<String> diff;
 
 	/*
 	 * Fill this class with utility methods that dont quite need to be in
@@ -173,6 +173,33 @@ public class Utility {
 		} else if (s.equalsIgnoreCase("Unbreaking V")
 				|| s.equalsIgnoreCase("Unbreaking 5")) {
 			blocked.put(Enchantment.DURABILITY, 5);
+		} else if (s.equalsIgnoreCase("Fire aspect I")
+				|| s.equalsIgnoreCase("Fire aspect 1")) {
+			blocked.put(Enchantment.FIRE_ASPECT, 1);
+		} else if (s.equalsIgnoreCase("Fire aspect II")
+				|| s.equalsIgnoreCase("Fire aspect 2")) {
+			blocked.put(Enchantment.FIRE_ASPECT, 2);
+		} else if (s.equalsIgnoreCase("Looting I")
+				|| s.equalsIgnoreCase("Looting 1")) {
+			blocked.put(Enchantment.LOOT_BONUS_MOBS, 1);
+		} else if (s.equalsIgnoreCase("Looting II")
+				|| s.equalsIgnoreCase("Looting 2")) {
+			blocked.put(Enchantment.LOOT_BONUS_MOBS, 2);
+		} else if (s.equalsIgnoreCase("Protection I")
+				|| s.equalsIgnoreCase("Protection 1")) {
+			blocked.put(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+		} else if (s.equalsIgnoreCase("Protection II")
+				|| s.equalsIgnoreCase("Protection 2")) {
+			blocked.put(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+		} else if (s.equalsIgnoreCase("Protection III")
+				|| s.equalsIgnoreCase("Protection 3")) {
+			blocked.put(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
+		}  else if (s.equalsIgnoreCase("Protection IV")
+				|| s.equalsIgnoreCase("Protection 4")) {
+			blocked.put(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+		}  else if (s.equalsIgnoreCase("Protection IV")
+				|| s.equalsIgnoreCase("Protection 4")) {
+			blocked.put(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
 		}
 		// Add more enchantment compatibility
 	}
