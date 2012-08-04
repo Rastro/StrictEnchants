@@ -7,6 +7,7 @@ import net.milkycraft.hooks.EntityManagerHook;
 import net.milkycraft.listeners.EnchantListener;
 import net.milkycraft.listeners.SyncListener;
 import net.milkycraft.utilities.Group;
+import net.milkycraft.utilities.Utility;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,7 +23,6 @@ public class StricterEnchant extends JavaPlugin {
 
 	/** The main. */
 	public StricterEnchant main;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -38,6 +38,7 @@ public class StricterEnchant extends JavaPlugin {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Timer(), 20L,
 				3600L);
 		EntityManagerHook.hook();
+		Utility.debug("Plugin loaded");
 	}
 
 	/*
@@ -65,7 +66,8 @@ class Timer extends SyncListener implements Runnable {
 
 	@Override
 	public void run() {
-		syncGroups();
+		Utility.debug("Syncing groups...");
+		syncGroups();		
 	}
 
 }

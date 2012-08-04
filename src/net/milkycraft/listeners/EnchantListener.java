@@ -2,9 +2,12 @@ package net.milkycraft.listeners;
 
 import net.milkycraft.StricterEnchant;
 import net.milkycraft.configuration.Settings;
+import net.milkycraft.events.EnchantModifyEvent;
 import net.milkycraft.hooks.EntityManagerHook;
 import net.milkycraft.utilities.Algorithm;
 import net.milkycraft.utilities.Group;
+import net.milkycraft.utilities.Utility;
+
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -31,20 +34,33 @@ public class EnchantListener extends StricterEnchant implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onEnchant(EnchantItemEvent e) {
 		if (e.getItem() == null) {
+			Utility.debug("Enchant item was null, returned");
 			return;
 		}
 		if (this.groups.get(e.getEnchanter().getName()) == Group.MAX) {
+			Utility.debug("Enchanter has MAX, returning = vanilla enchant");
 			return;
 		}
 		if (Settings.hook) {
 			if (EntityManagerHook.api.canEnchant(e.getEnchanter())) {
 				Algorithm.get().cal(e.getEnchanter(), e.getEnchantsToAdd(),
 						e.getExpLevelCost(), e.getItem());
+				Utility.debug("Called algorithm thru entitymanager");
 				return;
 			}
 		}
 		Algorithm.get().cal(e.getEnchanter(), e.getEnchantsToAdd(),
 				e.getExpLevelCost(), e.getItem());
+		Utility.debug("Called algorithm without entitymanager");
 	}
 
+	
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onEnchantModification(EnchantModifyEvent e) {
+		if(e.getItem() == null) {
+			return;
+		}
+			e.enchant(e.getItem(), e.getResult());
+			Utility.debug("Enchanted Item was modifed via EnchantModifyEvent");
+	}
 }

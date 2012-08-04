@@ -5,6 +5,7 @@ import java.util.Set;
 
 import net.milkycraft.StricterEnchant;
 import net.milkycraft.utilities.Group;
+import net.milkycraft.utilities.Utility;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -42,21 +43,30 @@ public class SyncListener extends StricterEnchant implements Listener {
 		if (e.getPlayer() == null) {
 			return;
 		}
+		if(this.queue.contains(e.getPlayer().getName())) {
+			Utility.debug(e.getPlayer().getName() + " was in queue, didnt give them a group");
+			return;
+		}
 		if (e.getPlayer().isOp()
 				|| e.getPlayer().hasPermission("senchant.group.max")) {
 			this.groups.put(e.getPlayer().getName(), Group.MAX);
+			Utility.debug(e.getPlayer().getName() + " was given max");
 			return;
 		} else if (e.getPlayer().hasPermission("senchant.group.high")) {
 			this.groups.put(e.getPlayer().getName(), Group.HIGH);
+			Utility.debug(e.getPlayer().getName() + " was given high");
 			return;
 		} else if (e.getPlayer().hasPermission("senchant.group.medium")) {
 			this.groups.put(e.getPlayer().getName(), Group.MEDIUM);
+			Utility.debug(e.getPlayer().getName() + " was given medium");
 			return;
 		} else if (e.getPlayer().hasPermission("senchant.group.low")) {
 			this.groups.put(e.getPlayer().getName(), Group.LOW);
+			Utility.debug(e.getPlayer().getName() + " was given low");
 			return;
 		} else {
 			this.groups.put(e.getPlayer().getName(), Group.DEFAULT);
+			Utility.debug(e.getPlayer().getName() + " was given default");
 			return;
 		}
 	}
@@ -90,9 +100,11 @@ public class SyncListener extends StricterEnchant implements Listener {
 		}
 		if (e.getReason().equals("The Ban Hammer has Spoken!")) {
 			this.queue.remove(e.getPlayer().getName());
+			Utility.debug("Kick reason was ban, removed " + e.getPlayer());
 		} else {
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this.main,
 					new Timer(e.getPlayer().getName()), 600L);
+			Utility.debug("Queueing a removal in 30 seconds, " + e.getPlayer() + " was kicked");
 		}
 	}
 
@@ -122,6 +134,7 @@ public class SyncListener extends StricterEnchant implements Listener {
 		@Override
 		public void run() {
 			runQueue(this.name);
+			Utility.debug("Run queue @ line 124 was called");
 		}
 	}
 
@@ -133,20 +146,25 @@ public class SyncListener extends StricterEnchant implements Listener {
 			this.groups.clear();
 		}
 		for (Player p : Bukkit.getOnlinePlayers()) {
-			if (p.isOp() || p.hasPermission("senchant.group.max")) {
+			if (p.hasPermission("senchant.group.max")) {
 				this.groups.put(p.getName(), Group.MAX);
+				Utility.debug(p.getName() + " was put in Group.MAX");
 				continue;
 			} else if (p.hasPermission("senchant.group.high")) {
 				this.groups.put(p.getName(), Group.HIGH);
+				Utility.debug(p.getName() + " was put in Group.HIGH");
 				continue;
 			} else if (p.hasPermission("senchant.group.medium")) {
 				this.groups.put(p.getName(), Group.MEDIUM);
+				Utility.debug(p.getName() + " was put in Group.MEDIUM");
 				continue;
 			} else if (p.hasPermission("senchant.group.low")) {
 				this.groups.put(p.getName(), Group.LOW);
+				Utility.debug(p.getName() + " was put in Group.LOW");
 				continue;
 			} else {
 				this.groups.put(p.getName(), Group.DEFAULT);
+				Utility.debug(p.getName() + " was put in Group.DEFAULT");
 			}
 		}
 	}
@@ -161,6 +179,7 @@ public class SyncListener extends StricterEnchant implements Listener {
 		if (Bukkit.getPlayerExact(name).isOnline()) {
 			return;
 		}
+		Utility.debug("Removing " + name + " from queue");
 		this.queue.remove(name);
 	}
 }

@@ -3,6 +3,7 @@ package net.milkycraft.configuration;
 import java.util.List;
 
 import net.milkycraft.StricterEnchant;
+import net.milkycraft.utilities.Utility;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -21,7 +22,7 @@ public class Settings extends Config {
 	/** The listdef. */
 	public static List<String> listhigh, listmed, listlow, listdef;
 	
-	public static Boolean hook, anon, log;
+	public static Boolean hook, anon, log, debug;
 
 	/**
 	 * Instantiates a new settings.
@@ -58,6 +59,7 @@ public class Settings extends Config {
 	 */
 	@Override
 	public void loadKeys() {
+		Utility.debug("Loading configuration keys");
 		wildhigh = config.getDouble("Groups.High.WildcardChance");
 		wildmed = config.getDouble("Groups.Medium.WildcardChance");
 		wildlow = config.getDouble("Groups.Low.WildcardChance");
@@ -73,6 +75,7 @@ public class Settings extends Config {
 		hook = config.getBoolean("General.HookEntityManagerIfInstalled");
 		anon = config.getBoolean("General.AnonymousEnchanting");
 		log = config.getBoolean("General.LogEnchants");
+		debug = config.getBoolean("General.Debug");
 	}
 
 	/**
