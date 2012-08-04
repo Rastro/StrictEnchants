@@ -8,10 +8,12 @@
 # If AnonymousEnchanting is set to false, the player is alerted their enchant was modified 
 # LogEnchant simply sends a log message to console for enchants 
 # Hooking into EntityManager is useful for blocking enchanting for certain groups
+# Debug sends a ton of info only useful for developers, keep it disabled :) :P
 General:
   AnonymousEnchanting: true
   LogEnchants: true
   HookEntityManagerIfInstalled: true
+  Debug: false
 Groups:
   High:
     WildcardChance: 5
